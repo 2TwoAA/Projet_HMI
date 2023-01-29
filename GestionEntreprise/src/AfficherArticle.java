@@ -1,0 +1,86 @@
+import java.awt.EventQueue;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.border.TitledBorder;
+import javax.swing.JTabbedPane;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class AfficherArticle {
+
+	JFrame frame;
+	JTable table;
+	Statement st;
+	ResultSet result;
+	JScrollPane centre;
+	
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AfficherArticle window = new AfficherArticle();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	
+	public AfficherArticle() {
+		initialize();
+	}
+
+	private void initialize() {
+		frame = new JFrame();
+		int x =Toolkit.getDefaultToolkit().getScreenSize().width;
+		int y=Toolkit.getDefaultToolkit().getScreenSize().height;
+		frame.setSize(x,y);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 190, 1134, 378);
+		frame.getContentPane().add(panel);
+		
+		JLabel lblNewLabel = new JLabel("      Les clients de l'entreprise");
+		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 39));
+		lblNewLabel.setBounds(210, 46, 645, 82);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Sortir");
+		btnNewButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			frame.hide();
+			new FenetreArticles();
+		}
+	});
+		btnNewButton.setBounds(968, 674, 144, 34);
+		frame.getContentPane().add(btnNewButton);
+		
+
+		
+		frame.setVisible(true);
+}
+
+
+	
+}
+

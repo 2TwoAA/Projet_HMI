@@ -1,0 +1,93 @@
+import java.awt.EventQueue;
+import java.awt.Toolkit;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
+
+public class AfficherCommandes {
+
+	JFrame frame;
+	JTable table;
+	
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AfficherCommandes window = new AfficherCommandes();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public AfficherCommandes() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		int x =Toolkit.getDefaultToolkit().getScreenSize().width;
+		int y=Toolkit.getDefaultToolkit().getScreenSize().height;
+		frame.setSize(x,y);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Voici toutes les commandes faites de l'entreprise");
+		lblNewLabel.setFont(new Font("Tahoma", Font.ITALIC, 47));
+		lblNewLabel.setForeground(new Color(255, 182, 193));
+		lblNewLabel.setBounds(106, 11, 1084, 98);
+		frame.getContentPane().add(lblNewLabel);
+		JPanel panel = new JPanel();
+		JScrollPane scrollPane = new JScrollPane();
+		
+		panel.setBounds(312, 154, 708, 284);
+		panel.add(scrollPane);
+		
+		frame.getContentPane().add(panel);
+		
+		
+		frame.setVisible(true);
+		
+		JButton btnNewButton = new JButton("Sortir");
+		btnNewButton.setBackground(new Color(148, 0, 211));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.hide();
+				new GestionCommande();
+			}
+		});
+		btnNewButton.setForeground(new Color(255, 240, 245));
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnNewButton.setBounds(1067, 414, 175, 43);
+		frame.getContentPane().add(btnNewButton);
+		
+		
+		
+	}
+}
+

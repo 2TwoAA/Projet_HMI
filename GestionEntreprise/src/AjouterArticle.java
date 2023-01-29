@@ -1,0 +1,141 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import java.awt.FlowLayout;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JButton;
+import javax.swing.AbstractAction;
+import java.awt.event.ActionEvent;
+import javax.swing.Action;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.UIManager;
+
+public class AjouterArticle {
+
+	private JFrame frame;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AjouterArticle window = new AjouterArticle();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public AjouterArticle() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(230, 230, 250));
+		frame.setBounds(100, 100, 1120, 685);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("R\u00E9f\u00E9rence article:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblNewLabel.setBackground(new Color(216, 191, 216));
+		lblNewLabel.setBounds(48, 162, 206, 40);
+		frame.getContentPane().add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setBackground(new Color(240, 255, 255));
+		textField.setBounds(318, 166, 422, 43);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("Libell\u00E9e:");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblNewLabel_1.setBackground(new Color(216, 191, 216));
+		lblNewLabel_1.setBounds(48, 222, 206, 42);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setBackground(new Color(240, 255, 255));
+		textField_1.setBounds(318, 227, 422, 43);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setBackground(new Color(240, 255, 255));
+		textField_2.setBounds(318, 295, 422, 43);
+		frame.getContentPane().add(textField_2);
+		textField_2.setColumns(10);
+		
+		JLabel lblNewLabel_3 = new JLabel("Quantit\u00E9:");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblNewLabel_3.setBackground(new Color(216, 191, 216));
+		lblNewLabel_3.setBounds(48, 367, 206, 27);
+		frame.getContentPane().add(lblNewLabel_3);
+		
+		textField_3 = new JTextField();
+		textField_3.setBackground(new Color(240, 255, 255));
+		textField_3.setBounds(318, 364, 422, 43);
+		frame.getContentPane().add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel lblNewLabel_4 = new JLabel("Prix Unitaire:");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblNewLabel_4.setBackground(new Color(216, 191, 216));
+		lblNewLabel_4.setBounds(48, 291, 206, 40);
+		frame.getContentPane().add(lblNewLabel_4);
+		
+		JButton btnNewButton = new JButton("Enregistrer");
+		
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnNewButton.setBackground(UIManager.getColor("Button.background"));
+		btnNewButton.setBounds(558, 463, 161, 34);
+		frame.getContentPane().add(btnNewButton);
+		
+		JLabel lblNewLabel_2 = new JLabel("Veuillez saisir les information de votre article:");
+		lblNewLabel_2.setForeground(new Color(138, 43, 226));
+		lblNewLabel_2.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 36));
+		lblNewLabel_2.setBounds(137, 65, 877, 43);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JButton btnNewButton_1 = new JButton("Sortir");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.hide();
+				new FenetreArticles();
+			}
+		});
+		
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 22));
+		btnNewButton_1.setBounds(325, 463, 146, 30);
+		frame.getContentPane().add(btnNewButton_1);
+		frame.setVisible(true);
+	}
+
+	
+}
